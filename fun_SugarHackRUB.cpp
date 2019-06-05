@@ -39,6 +39,8 @@ Comment
 */
 
 RESULT( 0 )
+RESULT( 0)
+RESULT( 0 )
 
 EQUATION("Gather")
 /*
@@ -51,13 +53,16 @@ max-value VORRAT = 1
 Einsammeln entspricht Vorrat des Agenten anzupassen
 */
 
+V("x_size")
 cur = search_position(SugarPatch)
 
+RESULT( 0)
 if(stock_sugar < 1) {
   if(cur != NULL) {
     WRITE(stock_sugar) = stock_sugar + VS(cur, "amount")
    }
 }
+
 
 if(stock_sugar) > 1 {
   WRITE(stock_sugar) = 1
@@ -76,15 +81,18 @@ EQUATION("Regrowth")
 Comment
 */
 
+RESULT( 0)
 RESULT( 0 )
 
 
 EQUATION("Gather_local")
 /*
-Comment
+Gives the number of suger available
 */
-
-RESULT( 0 )
+cur = SEARCH_POSITION_GRID("SugarPatch")
+V[0]=VS(cur,"cur_sugar")
+WRITES(cur,"cur_sugar",0)
+RESULT(V[0])
 
 
 

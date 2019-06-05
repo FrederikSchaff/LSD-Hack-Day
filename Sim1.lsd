@@ -18,6 +18,7 @@ Label Root
 		Param: max_sugar
 		Var: Regrowth
 		Func: Gather_local
+		Param: cur_sugar
 
 	}
 
@@ -52,6 +53,7 @@ Param: Amount 0 n + n n	0
 Param: max_sugar 0 n + n n	0
 Var: Regrowth 0 n + n n
 Func: Gather_local 0 n + n n
+Param: cur_sugar 0 n - n n	0
 
 SIM_NUM 1
 SEED 1
@@ -68,68 +70,105 @@ END_DESCRIPTION
 Parameter_x_size
 Size of the grid in x direction
 
+_INIT_
+
 END_DESCRIPTION
 
 Parameter_y_size
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Parameter_rel_sugar
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Parameter_eff_sugar
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Parameter_n_agent
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Variable_Init
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Object_Agent
 (no description available)
+
+_INIT_
+
 END_DESCRIPTION
 
 Parameter_stock_sugar
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Variable_Move
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Variable_Metabolism
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Variable_Gather
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Object_SugarPatch
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Parameter_Amount
 Amount of Sugar available
 
+_INIT_
+
 END_DESCRIPTION
 
 Parameter_max_sugar
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Variable_Regrowth
 (no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Function_Gather_local
 Gather one item sugar
 
+_INIT_
+
+END_DESCRIPTION
+
+Parameter_cur_sugar
+(no description available)
 END_DESCRIPTION
 
 

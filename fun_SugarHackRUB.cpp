@@ -117,10 +117,13 @@ RESULT( 0 )
 
 EQUATION("Regrowth")
 /*
-Comment
+wenn amount_t < max_amount, dann (amount_t * (1 + Wachstumsfaktor)) , max Wert = 2 * amount_0 
 */
+if ( T == 0) {double amount_sugar_max = V("amount") * 2};												//Maximal sugar amount ist doppelter sugar amount von t=0
 
-RESULT( 0 )
+if(V("amount") < V("amount_sugar_max")) {WRITE("amount",V("amount")*1.01)};       // Wenn maximum nicht erreicht, dann wachse um 1%
+
+RESULT( 0)
 
 
 EQUATION("Gather_local")

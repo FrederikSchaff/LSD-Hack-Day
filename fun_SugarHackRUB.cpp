@@ -11,12 +11,56 @@ MODELBEGIN
 
 
 
+EQUATION("Init")
+/*
+Comment
+*/
 
 
 
+RESULT( 0 )
+
+//Agents
+
+EQUATION("Move")
+/*
+Comment
+*/
+
+RESULT( )
 
 
+EQUATION("Metabolism")
+/*
+Comment
+*/
 
+RESULT( )
+
+EQUATION("Gather")
+/*
+Comment
+*/
+
+RESULT( )
+
+
+//Sugar
+
+EQUATION("Regrowth")
+/*
+Comment
+*/
+
+RESULT( )
+
+
+EQUATION("Gather_local")
+/*
+Comment
+*/
+
+RESULT( )
 
 
 

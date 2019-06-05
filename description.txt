@@ -1,7 +1,7 @@
 Model SugarHack (ver. 1.0)
 
 
-test WURSTSALAT
+test WURSTSALAT mit SPÄTZLE
 (Enter the Model description text here)
 
 (PRESS CTRL+E TO EDIT EQUATIONS)

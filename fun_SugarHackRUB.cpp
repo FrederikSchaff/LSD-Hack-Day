@@ -24,10 +24,13 @@ RESULT( 0 )
 
 EQUATION("Move")
 /*
-Comment
+The agent moves in a random direction.
 */
 
-RESULT( )
+double where = uniform_int(0,8);
+MOVE(where);
+
+RESULT( 0 )
 
 
 EQUATION("Metabolism")

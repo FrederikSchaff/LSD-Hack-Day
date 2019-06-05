@@ -38,16 +38,40 @@ EQUATION("Metabolism")
 Comment
 */
 
+RESULT( 0 )
 RESULT( 0)
+RESULT( 0 )
 
 EQUATION("Gather")
 /*
-Comment
+Agent collects sugar from Patch
+
+'PSEUDO CODE':
+how much sugar do i have? VORRAT?
+how much amount is available? amount?
+max-value VORRAT = 1
+Einsammeln entspricht Vorrat des Agenten anzupassen
 */
 
 V("x_size")
+cur = search_position(SugarPatch)
 
 RESULT( 0)
+if(stock_sugar < 1) {
+  if(cur != NULL) {
+    WRITE(stock_sugar) = stock_sugar + VS(cur, "amount")
+   }
+}
+
+
+if(stock_sugar) > 1 {
+  WRITE(stock_sugar) = 1
+}
+
+
+
+
+RESULT( 0 )
 
 
 //Sugar
@@ -58,6 +82,7 @@ Comment
 */
 
 RESULT( 0)
+RESULT( 0 )
 
 
 EQUATION("Gather_local")

@@ -53,20 +53,20 @@ max-value VORRAT = 1
 Einsammeln entspricht Vorrat des Agenten anzupassen
 */
 
-V("x_size")
-cur = search_position(SugarPatch)
+V("x_size") ;
+cur = search_position(SugarPatch) ;
 
 RESULT( 0)
-if(stock_sugar < 1) {
-  if(cur != NULL) {
-    WRITE("stock_sugar", (stock_sugar + VS(cur, "amount"))) 
+if(stock_sugar < 1) { 
+  if(cur != NULL) { 
+    WRITE("stock_sugar", (stock_sugar + VS(cur, "amount")))
    }
-}
+};
 
 
-if(stock_sugar) > 1 {
-  WRITE(stock_sugar,1)
-}
+if(stock_sugar) > 1 { 
+  WRITE(stock_sugar,1) 
+};
 
 
 
@@ -89,12 +89,10 @@ EQUATION("Gather_local")
 /*
 Gives the number of suger available
 */
-
-double currentSugar;
-cur = SEARCH_POSITION_GRID("SugarPatch");
-currentSugar=VS(cur,"cur_sugar");
-WRITES(cur,"cur_sugar",0);
-RESULT(currentSugar)
+cur = SEARCH_POSITION_GRID("SugarPatch")
+V[0]=VS(cur,"cur_sugar")
+WRITES(cur,"cur_sugar",0)
+RESULT(V[0])
 
 
 

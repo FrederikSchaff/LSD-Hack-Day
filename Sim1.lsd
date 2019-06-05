@@ -1,0 +1,178 @@
+	
+Label Root
+{
+	Son: Agent
+	Label Agent
+	{
+		Param: stock_sugar
+		Var: Move
+		Var: Metabolism
+		Var: Gather
+
+	}
+
+	Son: SugarPatch
+	Label SugarPatch
+	{
+		Param: Amount
+		Param: max_sugar
+		Var: Regrowth
+		Func: Gather_local
+
+	}
+
+	Param: x_size
+	Param: y_size
+	Param: rel_sugar
+	Param: eff_sugar
+	Param: n_agent
+	Var: Init
+
+}
+
+
+DATA
+
+Object: Root C	1
+Param: x_size 0 n + n n	50
+Param: y_size 0 n + n n	50
+Param: rel_sugar 0 n + n n	0.5
+Param: eff_sugar 0 n + n n	0.5
+Param: n_agent 0 n + n n	20
+Var: Init 0 n + n n
+
+Object: Agent C	1
+Param: stock_sugar 0 n + n n	0.5
+Var: Move 0 n + n n
+Var: Metabolism 0 n + n n
+Var: Gather 0 n + n n
+
+Object: SugarPatch C	1
+Param: Amount 0 n + n n	0
+Param: max_sugar 0 n + n n	0
+Var: Regrowth 0 n + n n
+Func: Gather_local 0 n + n n
+
+SIM_NUM 1
+SEED 1
+MAX_STEP 100
+EQUATION fun_SugarHackRUB.cpp
+MODELREPORT report_Sim1.html
+
+DESCRIPTION
+
+Object_Root
+(no description available)
+END_DESCRIPTION
+
+Parameter_x_size
+Size of the grid in x direction
+
+END_DESCRIPTION
+
+Parameter_y_size
+(no description available)
+END_DESCRIPTION
+
+Parameter_rel_sugar
+(no description available)
+END_DESCRIPTION
+
+Parameter_eff_sugar
+(no description available)
+END_DESCRIPTION
+
+Parameter_n_agent
+(no description available)
+END_DESCRIPTION
+
+Variable_Init
+(no description available)
+END_DESCRIPTION
+
+Object_Agent
+(no description available)
+END_DESCRIPTION
+
+Parameter_stock_sugar
+(no description available)
+END_DESCRIPTION
+
+Variable_Move
+(no description available)
+END_DESCRIPTION
+
+Variable_Metabolism
+(no description available)
+END_DESCRIPTION
+
+Variable_Gather
+(no description available)
+END_DESCRIPTION
+
+Object_SugarPatch
+(no description available)
+END_DESCRIPTION
+
+Parameter_Amount
+Amount of Sugar available
+
+END_DESCRIPTION
+
+Parameter_max_sugar
+(no description available)
+END_DESCRIPTION
+
+Variable_Regrowth
+(no description available)
+END_DESCRIPTION
+
+Function_Gather_local
+Gather one item sugar
+
+END_DESCRIPTION
+
+
+DOCUOBSERVE
+
+END_DOCUOBSERVE
+
+
+DOCUINITIAL
+
+END_DOCUINITIAL
+
+
+EQ_FILE
+//#define EIGENLIB			// uncomment to use Eigen linear algebra library
+//#define NO_POINTER_INIT	// uncomment to disable pointer checking
+
+#include "fun_head_fast.h"
+
+// do not add Equations in this area
+
+MODELBEGIN
+
+// insert your equations here, between the MODELBEGIN and MODELEND words
+
+
+
+
+
+
+
+
+
+
+
+
+MODELEND
+
+// do not add Equations in this area
+
+void close_sim( void )
+{
+	// close simulation special commands go here
+}
+
+END_EQ_FILE

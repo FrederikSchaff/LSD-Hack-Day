@@ -11,12 +11,59 @@ MODELBEGIN
 
 
 
+EQUATION("Init")
+/*
+Comment
+*/
 
 
 
+RESULT( 0 )
+
+//Agents
+
+EQUATION("Move")
+/*
+The agent moves in a random direction.
+*/
+
+double where = uniform_int(0,8);
+MOVE(where);
+
+RESULT( 0 )
 
 
+EQUATION("Metabolism")
+/*
+Comment
+*/
 
+RESULT( )
+
+EQUATION("Gather")
+/*
+Comment
+*/
+
+RESULT( )
+
+
+//Sugar
+
+EQUATION("Regrowth")
+/*
+Comment
+*/
+
+RESULT( )
+
+
+EQUATION("Gather_local")
+/*
+Comment
+*/
+
+RESULT( )
 
 
 

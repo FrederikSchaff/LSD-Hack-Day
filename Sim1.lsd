@@ -43,8 +43,8 @@ Param: n_agent 0 n + n n	20
 Var: Init 0 n + n n
 
 Object: Agent C	1
-Param: stock_sugar 0 n + n n	0.5
-Var: Move 0 n + n n
+Param: stock_sugar 0 s + n n	0.5
+Var: Move 0 s + n n
 Var: Metabolism 0 n + n n
 Var: Gather 0 n + n n
 
@@ -53,11 +53,11 @@ Param: Amount 0 n + n n	0
 Param: max_sugar 0 n + n n	0
 Var: Regrowth 0 n + n n
 Func: Gather_local 0 n + n n
-Param: cur_sugar 0 n - n n	0
+Param: cur_sugar 0 n + n n	0
 
 SIM_NUM 1
 SEED 1
-MAX_STEP 100
+MAX_STEP 1000
 EQUATION fun_SugarHackRUB.cpp
 MODELREPORT report_Sim1.html
 
@@ -169,6 +169,8 @@ END_DESCRIPTION
 
 Parameter_cur_sugar
 (no description available)
+_INIT_
+All 1 instances equal to 0.
 END_DESCRIPTION
 
 

@@ -16,6 +16,8 @@ EQUATION("Init")
 Comment
 */
 
+ABMAT_ADD_MICRO("Move");
+
 //Create the GIS, as it is the main GIS root is part
 INIT_SPACE_ROOT(V("x_size"),V("y_size"));
 
@@ -51,8 +53,8 @@ ADD_TO_SPACE_RNDS(SEARCH("SugarPatch"),root);
 CYCLE(cur,"SugarPatch"){
 	WRITES(cur,"Amount",RND); //in 0 and 1
 	WRITES(cur,"max_sugar",RND);
-	SET_LAT_COLORS(cur,3); //Yellow
-	SET_LAT_PRIORITYS(cur,1);
+	//SET_LAT_COLORS(cur,3); //Yellow
+	//SET_LAT_PRIORITYS(cur,1);
 }
 
 
@@ -63,6 +65,7 @@ RESULT( 0 )
 //Agents
 
 EQUATION("Move")
+PLOG("\nMove");
 /*
 The agent moves in a random direction.
 */
@@ -70,7 +73,7 @@ The agent moves in a random direction.
 double where = uniform_int(0,8);
 MOVE(where);
 
-RESULT( 0 )
+RESULT( where )
 
 
 EQUATION("Metabolism")
@@ -90,23 +93,21 @@ how much amount is available? amount?
 max-value VORRAT = 1
 Einsammeln entspricht Vorrat des Agenten anzupassen
 */
+PLOG("\nGather");
 
-V("x_size") ;
-cur = search_position(SugarPatch) ;
+V("x_size");
+cur = SEARCH_POSITION("SugarPatch") ;
 
-RESULT( 0)
-if(stock_sugar < 1) { 
+if( V("stock_sugar") < 1) { 
   if(cur != NULL) { 
-    WRITE("stock_sugar", (stock_sugar + VS(cur, "amount")))
+    WRITE("stock_sugar", (V("stock_sugar") + VS(cur, "amount")));
    }
-};
+}
 
 
-if(stock_sugar) > 1 { 
-  WRITE(stock_sugar,1) 
-};
-
-
+if( V("stock_sugar") > 1 ) { 
+  WRITE("stock_sugar",1); 
+}
 
 
 RESULT( 0 )
@@ -126,12 +127,10 @@ EQUATION("Gather_local")
 /*
 Gives the number of suger available
 */
-cur = SEARCH_POSITION_GRID("SugarPatch")
-V[0]=VS(cur,"cur_sugar")
-WRITES(cur,"cur_sugar",0)
-RESULT(V[0])
-
-RESULT( 0 )
+cur = SEARCH_POSITION_GRID("SugarPatch");
+v[0]=VS(cur,"cur_sugar");
+WRITES(cur,"cur_sugar",0);
+RESULT(v[0])
 
 
 MODELEND

@@ -59,13 +59,13 @@ cur = search_position(SugarPatch)
 RESULT( 0)
 if(stock_sugar < 1) {
   if(cur != NULL) {
-    WRITE(stock_sugar) = stock_sugar + VS(cur, "amount")
+    WRITE("stock_sugar", (stock_sugar + VS(cur, "amount"))) 
    }
 }
 
 
 if(stock_sugar) > 1 {
-  WRITE(stock_sugar) = 1
+  WRITE(stock_sugar,1)
 }
 
 

@@ -38,14 +38,16 @@ EQUATION("Metabolism")
 Comment
 */
 
-RESULT( )
+RESULT( 0)
 
 EQUATION("Gather")
 /*
 Comment
 */
 
-RESULT( )
+V("x_size")
+
+RESULT( 0)
 
 
 //Sugar
@@ -55,15 +57,16 @@ EQUATION("Regrowth")
 Comment
 */
 
-RESULT( )
+RESULT( 0)
 
 
 EQUATION("Gather_local")
 /*
-Comment
+Gives the number of suger available
 */
-
-RESULT( )
+cur = SEARCH_POSITION_GRID("SugarPatch")
+V[0]=VS(cur,"cur_sugar")
+RESULT(V[0])
 
 
 

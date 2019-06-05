@@ -89,10 +89,12 @@ EQUATION("Gather_local")
 /*
 Gives the number of suger available
 */
-cur = SEARCH_POSITION_GRID("SugarPatch")
-V[0]=VS(cur,"cur_sugar")
-WRITES(cur,"cur_sugar",0)
-RESULT(V[0])
+
+double currentSugar;
+cur = SEARCH_POSITION_GRID("SugarPatch");
+currentSugar=VS(cur,"cur_sugar");
+WRITES(cur,"cur_sugar",0);
+RESULT(currentSugar)
 
 
 

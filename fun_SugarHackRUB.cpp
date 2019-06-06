@@ -16,7 +16,10 @@ EQUATION("Init")
 Comment
 */
 
-ABMAT_ADD_MICRO("Move");
+ABMAT_DYNAMIC_FACTORS
+ABMAT_ADD_MICRO("Gather_local");
+ABMAT_ADD_MICRO("Amount");
+ABMAT_ADD_FACT("Move","");
 
 //Create the GIS, as it is the main GIS root is part
 INIT_SPACE_ROOT(V("x_size"),V("y_size"));
@@ -44,7 +47,7 @@ if (amount_sugar_patches > 0) {
 	ADDNOBJ("SugarPatch",amount_sugar_patches); 	
 }
 
-ADD_TO_SPACE_RNDS(SEARCH("SugarPatch"),root);
+ADD_ALL_TO_SPACES(root,SEARCH("SugarPatch"));
 
 
 
@@ -53,8 +56,8 @@ ADD_TO_SPACE_RNDS(SEARCH("SugarPatch"),root);
 CYCLE(cur,"SugarPatch"){
 	WRITES(cur,"Amount",RND); //in 0 and 1
 	WRITES(cur,"max_sugar",RND);
-	//SET_LAT_COLORS(cur,3); //Yellow
-	//SET_LAT_PRIORITYS(cur,1);
+	SET_LAT_COLORS(cur,3); //Yellow
+	SET_LAT_PRIORITYS(cur,1);
 }
 
 
@@ -96,11 +99,11 @@ Einsammeln entspricht Vorrat des Agenten anzupassen
 PLOG("\nGather");
 
 V("x_size");
-cur = SEARCH_POSITION("SugarPatch") ;
+cur = SEARCH_POSITION("SugarPatch") ; //If there is no sugarPatch at the current pos, NULL is returned.
 
 if( V("stock_sugar") < 1) { 
   if(cur != NULL) { 
-    WRITE("stock_sugar", (V("stock_sugar") + VS(cur, "amount")));
+    WRITE("stock_sugar", (V("stock_sugar") + VS(cur, "Amount")));
    }
 }
 
@@ -119,21 +122,23 @@ EQUATION("Regrowth")
 /*
 wenn amount_t < max_amount, dann (amount_t * (1 + Wachstumsfaktor)) , max Wert = 2 * amount_0 
 */
-if ( T == 0) {double amount_sugar_max = V("amount") * 2};												//Maximal sugar amount ist doppelter sugar amount von t=0
+double amount_sugar_max = V("max_sugar");								//Maximal sugar amount ist doppelter sugar amount von t=0
 
-if(V("amount") < V("amount_sugar_max")) {WRITE("amount",V("amount")*1.01)};       // Wenn maximum nicht erreicht, dann wachse um 1%
+if( V("Amount") < amount_sugar_max ) {
+	WRITE("Amount",V("Amount")*1.01); //MULT("Amount",1.01)
+	}       // Wenn maximum nicht erreicht, dann wachse um 1%
 
 RESULT( 0)
 
 
 EQUATION("Gather_local")
 /*
-Gives the number of suger available
+Gives the number of suger available.
 */
-cur = SEARCH_POSITION_GRID("SugarPatch");
-v[0]=VS(cur,"cur_sugar");
-WRITES(cur,"cur_sugar",0);
-RESULT(v[0])
+double gathered = V("Amount"); //As this variable is part of SugarPatch, no explicit pointer (using VS) is necessary
+WRITE("Amount",0);
+
+RESULT(gathered)
 
 
 MODELEND

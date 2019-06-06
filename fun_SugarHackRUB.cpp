@@ -17,7 +17,7 @@ Comment
 */
 
 ABMAT_DYNAMIC_FACTORS
-ABMAT_ADD_MICRO("Gather_local");
+ABMAT_ADD_MICRO("stock_sugar");
 ABMAT_ADD_MICRO("Amount");
 ABMAT_ADD_FACT("Move","");
 
@@ -98,7 +98,6 @@ Einsammeln entspricht Vorrat des Agenten anzupassen
 */
 PLOG("\nGather");
 
-V("x_size");
 cur = SEARCH_POSITION("SugarPatch") ; //If there is no sugarPatch at the current pos, NULL is returned.
 
 if( V("stock_sugar") < 1) { 
